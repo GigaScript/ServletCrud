@@ -1,5 +1,6 @@
 package org.example.servlet;
 
+import org.example.Config;
 import org.example.controller.HandlerController;
 import org.example.controller.PostController;
 import org.example.handlers.Handler;
@@ -19,10 +20,8 @@ public class MainServlet extends HttpServlet {
 
     @Override
     public void init() {
-//        final var repository = new InMemoryPostRepository();
-//        final var service = new PostService(repository);
-        final var context  = new AnnotationConfigApplicationContext("org.example");
-        postController =context.getBean(PostController.class);
+        final var context  = new AnnotationConfigApplicationContext(Config.class);
+        postController = context.getBean(PostController.class);
         handlerController = context.getBean(HandlerController.class);
     }
 
