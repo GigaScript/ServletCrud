@@ -2,13 +2,14 @@ package org.example.repository;
 
 import org.example.exception.NotFoundException;
 import org.example.model.Post;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
-
+@Repository
 public class InMemoryPostRepository implements PostRepository {
     private final List<Post> posts = Collections.synchronizedList(new ArrayList<>());
     private AtomicLong counter = new AtomicLong();

@@ -1,12 +1,13 @@
 package org.example.controller;
 
 import org.example.handlers.*;
+import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+@Controller
 public class HandlerController {
     private final Map<String, Map<String, Handler>> handlers = new ConcurrentHashMap<>();
 
