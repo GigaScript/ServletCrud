@@ -5,6 +5,7 @@ import org.example.controller.PostController;
 import org.example.handlers.Handler;
 import org.example.repository.InMemoryPostRepository;
 import org.example.service.PostService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +19,11 @@ public class MainServlet extends HttpServlet {
 
     @Override
     public void init() {
-        final var repository = new InMemoryPostRepository();
-        final var service = new PostService(repository);
-        postController = new PostController(service);
-        handlerController = new HandlerController();
+//        final var repository = new InMemoryPostRepository();
+//        final var service = new PostService(repository);
+        final var context  = new AnnotationConfigApplicationContext("org.example");
+        postController =context.getBean(PostController.class);
+        handlerController = context.getBean(HandlerController.class);
     }
 
     @Override
